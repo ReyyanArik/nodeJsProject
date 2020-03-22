@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+<p id="demo"/>
+<div id="webpage"></div>
+<h2 id="header2">tos.dsans.int</h2>
+
+<ul id="listem">
+</ul>
+<button id="ajaxButton">Dosyaları Listele</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#ajaxButton").click(function(){
+            $.get("folderList", function(data, status){
+                console.log("Dosyalar: " + data + "\nStatus: " + status);
+                $("#listem").empty();
+                data.forEach(function(num){
+                    $("#listem").append('<li><a href="/'+num+'" id="'+num+'">' + num + '</a></li>');
+                });
+            });
+        });
+    });
+</script></body>
+</html>
