@@ -2,15 +2,14 @@ var http = require("http")
 var express = require("express")
 var url = require("url")
 var fs = require("fs")
-//TODO: fs ile regex yazılmıyor, globu araştır.
-const glob = require('glob');
-
 
 var app = express();
+app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/allure-results'));
 
 app.get('/', function(req, res) {
     console.log(req.url);
-    res.sendFile( __dirname + "/index.html");
+    res.sendFile( __dirname + "/boxes.html");
 })
 
 var directoryList = []

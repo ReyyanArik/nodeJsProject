@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-grid-min.css">
+</head>
+<body>
+
+<div class="container">
+    
+        <div class="row">
+            <div class="col">
+                <div class="square">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <h2>BDD WEB</h2>
+                        <p>BDD Web Raporlarını Görüntülemek için</p>
+                        <a href="#" id="web">Tıklayınız</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="square">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <h2>BDD Android</h2>
+                         <p>BDD Android Raporlarını Görüntülemek için</p>
+                        <a href="#" id="android">Tıklayınız</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="square">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <h2>BDD IOS</h2>
+                         <p>BDD IOS Raporlarını Görüntülemek için</p>
+                        <a href="#" id="ios">Tıklayınız</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="square">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <h2>KARATE</h2>
+                        <p>Karate Raporlarını Görüntülemek için</p>
+                        <a href="#" id="karate">Tıklayınız</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="square">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <h2>GRAFANA</h2>
+                        <p>Grafana Raporlarını Görüntülemek için</p>
+                        <a href="#" id="grafana">Tıklayınız</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                
+            </div>
+        </div>
+</div>
+
+<ul id="listem">
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#web").click(function(){
+            $.get("folderList", function(data, status){
+                console.log("Dosyalar: " + data + "\nStatus: " + status);
+                $("#listem").empty();
+                data.forEach(function(num){
+                    $("#listem").append('<li><a href="/'+num+'" id="'+num+'">' + num + '</a></li>');
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>
