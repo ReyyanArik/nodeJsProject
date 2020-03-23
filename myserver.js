@@ -32,30 +32,9 @@ console.log(directoryList);
 app.get('/folderList', function(req, res){
     console.log(req.url);
     res.send(directoryList);
-//    res.send(directoryList);  
 });
 
-/*
-app.get('/a', function(req, res){ 
-    console.log(req.url);
-    res.sendFile( __dirname + '/allure-results/a/index.html');    
-        
-});
 
-app.get('/b', function(req, res){ 
-    console.log(req.url);
-    res.sendFile( __dirname + '/allure-results/b/index.html');    
-        
-});
-*/
-
-for (var i = 0; i < directoryList.length; i++) {
-    app.get('/'+directoryList[i], function(req, res){ 
-    console.log(req.url);
-    res.sendFile( __dirname + '/allure-results/'+directoryList[i]+'/index.html');    
-        
-    });
-}
 
 app.listen(80, function(){
     console.log('Server running at http://127.0.0.1:80/');
