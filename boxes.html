@@ -4,8 +4,9 @@
     <meta charset="UTF-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css">
+    <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
 </head>
@@ -97,7 +98,7 @@
                     <span></span>
                     <div class="content">
                         <h4>LOGS</h4>
-                        <p>Agent ve Grid Loglarını Görüntülemek için</p>
+                        <p>Server ve Agent Loglarını Görüntülemek için</p>
                         <a href="/logs" id="swagger" target="_blank">Tıklayınız</a>
                     </div>
                 </div>
@@ -107,51 +108,46 @@
 </div>
 
 <div class="container table-container my-report-table-container" style="display:none;">
-    
-        <table id="myDataTable" class="table table-striped table-light table-hover" cellspacing="0" width="100%">
-            <thead class="thead-my-style">
-                <tr>
-                  <th ><img src="/img/nsn.png"/></th>
-                  <th >Rapor Adı</th>
-                  <th >Rapor Tarihi</th>
-                  <th >Rapor Saati</th>
-                </tr>
-            </thead>
-            <tbody id="myTable"></tbody>
-        </table>
-    
+    <table id="myDataTable" class="table table-striped table-light table-hover" cellspacing="0" width="100%">
+        <thead class="thead-my-style">
+            <tr>
+                <th ><img src="/img/nsn.png"/></th>
+                <th >Rapor Adı</th>
+                <th >Rapor Tarihi</th>
+                <th >Rapor Saati</th>
+            </tr>
+        </thead>
+        <tbody id="myTable"></tbody>
+    </table>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/dataTables.bootstrap4.min.js"></script>
 <script>
     $(document).ready(function(){
         $("#web").click(function(){
-            $("#project-container").hide();
-            $(".table-container").show();
+            showHideContainers();
             $.get("/bddweb", function(data, status){
                 addDataToTable(data,status);
             });
         });
         $("#android").click(function(){
-            $("#project-container").hide();
-            $(".table-container").show();
+            showHideContainers();
             $.get("bddandroid", function(data, status){
                addDataToTable(data,status);
             });
         });
         $("#ios").click(function(){
-            $("#project-container").hide();
-            $(".table-container").show();
+            showHideContainers();
             $.get("bddios", function(data, status){
                 addDataToTable(data,status);
             });
         });
         $("#karate").click(function(){
-            $("#project-container").hide();
-            $(".table-container").show();
+            showHideContainers();
             $.get("karate", function(data, status){
                 addDataToTable(data,status);
             });
@@ -159,30 +155,30 @@
         
     });
 
+    function showHideContainers(){
+        $("#project-container").hide();
+        $(".table-container").show();
+    }
+
     function addDataToTable(data,status){
         console.log("Dosyalar: " + data + "\nStatus: " + status);
                 var counter=0;
                 data.forEach(function(num){
                     counter++;
                     $("#myTable").append('<tr><th scope="row" class="myTableRow">'+counter
-                        +'</th><td class="reportName"><a href="/'+num+'" id="'+num+'">' + num 
-                        + '</a></td><td class="reportDate">'+getMyReportDate(num)
-                        +'</td><td class="reportTime">'+getMyReportTime(num)+'</td>');
+                        +'</th><td class="reportName"><a href="/'+num+'" id="'+num+'" target="_blank">' + num 
+                        + '</a></td><td class="reportDate">'+getTosReportDate(num)
+                        +'</td><td class="reportTime">'+getTosReportTime(num)+'</td>');
                 });
                 $('#myDataTable').DataTable();
     }
 
-    function getMyReportTime(str) {
+    function getTosReportTime(str) {
         return str[0]+str[1] + ":" + str[2] + str[3] +":"+ str[4]+ str[5];
     }
-    function getMyReportDate(str) {
+    function getTosReportDate(str) {
         return str[6]+str[7] + "." + str[8] + str[9] +"."+ str[10]+ str[11] +str[12]+str[13];
     }
 </script>
-
-
-
-
-
 </body>
 </html>
