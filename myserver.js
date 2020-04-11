@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 
 tosProjects.forEach(tosProject =>{
     app.get('/'+tosProject, function(req, res){
-        getTosReportByFolderName('bddweb',req,res);
+        getTosReportByFolderName(tosProject,req,res);
     });
 });
 
@@ -40,7 +40,7 @@ function getTosReportByFolderName(tosFile,req,res){
         if (fileNameRegex.test(file)) {
             directoryList.push(file);
                 app.get('/'+file, function(req, res){ 
-                 res.sendFile( __dirname + '/allure-results/bddweb/'+file+'/index.html');    
+                 res.sendFile( __dirname + '/allure-results/'+tosfile+'/'+file+'/index.html');    
                 });
         }
     });
