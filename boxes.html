@@ -14,73 +14,94 @@
 <div id="project-container" >
 <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="square">
                     <span></span>
                     <span></span>
                     <span></span>
                     <div class="content">
-                        <h2>BDD WEB</h2>
+                        <h4>BDD WEB</h4>
                          <p>BDD WEB Raporlarını Görüntülemek için</p>
                         <a href="#" id="web">Tıklayınız</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="square">
                     <span></span>
                     <span></span>
                     <span></span>
                     <div class="content">
-                        <h2>BDD Android</h2>
+                        <h4>BDD Android</h4>
                          <p>BDD Android Raporlarını Görüntülemek için</p>
                         <a href="#" id="android">Tıklayınız</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="square">
                     <span></span>
                     <span></span>
                     <span></span>
                     <div class="content">
-                        <h2>BDD IOS</h2>
+                        <h4>BDD IOS</h4>
                          <p>BDD IOS Raporlarını Görüntülemek için</p>
                         <a href="#" id="ios">Tıklayınız</a>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="square">
                     <span></span>
                     <span></span>
                     <span></span>
                     <div class="content">
-                        <h2>KARATE</h2>
-                        <p>Karate Raporlarını Görüntülemek için</p>
+                        <h4>KARATE</h4>
+                        <p>Karate Api Raporlarını Görüntülemek için</p>
                         <a href="#" id="karate">Tıklayınız</a>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4">
+</div>
+<div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="square">
                     <span></span>
                     <span></span>
                     <span></span>
                     <div class="content">
-                        <h2>GRAFANA</h2>
-                        <p>Grafana Raporlarını Görüntülemek için</p>
-                        <a href="#" id="grafana">Tıklayınız</a>
+                        <h4>GRAFANA</h4>
+                        <p>Grafana JMeter Login Sayfası için</p>
+                        <a href="/login" id="grafana" target="_blank">Tıklayınız</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4"> </div>
+            <div class="col-lg-3 col-md-6 col-sm-12"> 
+                <div class="square">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <h4>SWAGGER</h4>
+                        <p>Swagger Webservislerini Görüntülemek için</p>
+                        <a href="/api-docs/#/" id="swagger" target="_blank">Tıklayınız</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12"> 
+                <div class="square">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <h4>LOGS</h4>
+                        <p>Agent ve Grid Loglarını Görüntülemek için</p>
+                        <a href="/logs" id="swagger" target="_blank">Tıklayınız</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -110,8 +131,36 @@
         $("#web").click(function(){
             $("#project-container").hide();
             $(".table-container").show();
-            $.get("folderList", function(data, status){
-                console.log("Dosyalar: " + data + "\nStatus: " + status);
+            $.get("/bddweb", function(data, status){
+                addDataToTable(data,status);
+            });
+        });
+        $("#android").click(function(){
+            $("#project-container").hide();
+            $(".table-container").show();
+            $.get("bddandroid", function(data, status){
+               addDataToTable(data,status);
+            });
+        });
+        $("#ios").click(function(){
+            $("#project-container").hide();
+            $(".table-container").show();
+            $.get("bddios", function(data, status){
+                addDataToTable(data,status);
+            });
+        });
+        $("#karate").click(function(){
+            $("#project-container").hide();
+            $(".table-container").show();
+            $.get("karate", function(data, status){
+                addDataToTable(data,status);
+            });
+        });
+        
+    });
+
+    function addDataToTable(data,status){
+        console.log("Dosyalar: " + data + "\nStatus: " + status);
                 var counter=0;
                 data.forEach(function(num){
                     counter++;
@@ -121,10 +170,7 @@
                         +'</td><td class="reportTime">'+getMyReportTime(num)+'</td>');
                 });
                 $('#myDataTable').DataTable();
-            });
-        });
-        
-    });
+    }
 
     function getMyReportTime(str) {
         return str[0]+str[1] + ":" + str[2] + str[3] +":"+ str[4]+ str[5];

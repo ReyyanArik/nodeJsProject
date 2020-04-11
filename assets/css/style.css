@@ -16,23 +16,14 @@ body{
 
 .square{
 	position: relative;
-	width: 300px;
-	height: 300px;
+	width: 240px;
+	height: 240px;
 	display: flex;
+	margin-top:10px;
 	justify-content: flex;
 	align-items: center;
 }
 
-
-.square2{
-	position: relative;
-	width: 600px;
-	height: 600px;
-	display: flex;
-	justify-content: flex;
-	left: 20%;
-	align-items: center;
-}
 
 .square span:nth-child(1){
 	position: absolute;
@@ -107,7 +98,6 @@ body{
 
 .content{
 	position: relative;
-	padding: 40px 60px;
 	color: #fff;
 	text-align: center;
 	transition: 0.5s;
@@ -117,9 +107,8 @@ body{
 .content a{
 	position: relative;
 	display: inline-block;
-	margin-top:10px;
 	border: 2px solid #fff;
-	padding: 6px 18px;
+	padding: 4px 12px;
 	text-decoration: none;
 	color: #fff;
 	font-weight :600;
@@ -207,6 +196,12 @@ body{
 #myDataTable_filter {
 	float: right;
 	color:#ddd;
+}
+
+.table .thead-my-style th {
+    color: #000;
+    background-color: rgba(254,204,0,0.8);
+    border-color:rgba(254,204,0,0.8);
 }
 
 
