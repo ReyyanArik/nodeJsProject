@@ -174,7 +174,7 @@ body{
   background-color: rgba(254,204,0,0.8);
 }
 
-.my-report-table-container{
+/*.my-report-table-container{
  	padding-right: 50px;
  	padding-left: 50px;
  	padding-bottom: 50px;
@@ -182,12 +182,31 @@ body{
 }
 
 
-table.dataTable {
+.table.dataTable {
     clear: both;
     margin-top: 6px !important;
     margin-bottom: 6px !important;
-    max-width: none !important;
     border-collapse: collapse;
+  	display: table;
+  	width: 100%;
+  	overflow-x: auto;
+  	-webkit-overflow-scrolling: touch;
+}
+*/
+#myDataTable_wrapper .row{
+	margin-bottom:10px;
+	display: block;
+	width: 100%;
+}
+
+#myDataTable_length, #myDataTable_info{
+	float:left;
+	color:#ddd;
+}
+
+#myDataTable_filter {
+	float: right;
+	color:#ddd;
 }
 
 
