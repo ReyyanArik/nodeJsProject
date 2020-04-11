@@ -164,6 +164,31 @@ body{
 	transform: rotate(50deg);
  }
 
+.thead-my-style{
+	color: #fff;
+ 	background-color: rgba(254,204,0,0.8);
+}
+
+.table .thead-my-style th {
+  color: #000;
+  background-color: rgba(254,204,0,0.8);
+}
+
+.my-report-table-container{
+ 	padding-right: 50px;
+ 	padding-left: 50px;
+ 	padding-bottom: 50px;
+ 	padding-top: 50px;
+}
+
+
+table.dataTable {
+    clear: both;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    max-width: none !important;
+    border-collapse: collapse;
+}
 
 
 
