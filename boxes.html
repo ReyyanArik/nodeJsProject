@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/brands.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/svg-with-js.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/v4-shims.min.css">
 </head>
 <body style="background-color:#28616b">
 
@@ -110,9 +117,10 @@
         <thead class="thead-my-style">
             <tr>
                 <th ><img src="/img/nsn.png"/></th>
-                <th >Rapor Adı</th>
-                <th >Rapor Tarihi</th>
-                <th >Rapor Saati</th>
+                <th ><i class="fas fa-file-signature"></i>  Rapor Adı</th>
+                <th ><i class="far fa-calendar-alt"></i>  Rapor Tarihi</th>
+                <th ><i class="far fa-clock"></i>  Rapor Saati</th>
+                <th ><i class="far fa-user"></i> Kullanıcı</th>
             </tr>
         </thead>
         <tbody id="myTable"></tbody>
@@ -124,6 +132,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/brands.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/conflict-detection.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/regular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/v4-shims.min.js"></script>
 <script>
     $(document).ready(function(){
         $("#web").click(function(){
@@ -166,7 +182,8 @@
                     $("#myTable").append('<tr><th scope="row" class="myTableRow">'+counter
                         +'</th><td class="reportName"><a href="/'+num+'" id="'+num+'" target="_blank">' + num 
                         + '</a></td><td class="reportDate">'+getTosReportDate(num)
-                        +'</td><td class="reportTime">'+getTosReportTime(num)+'</td>');
+                        +'</td><td class="reportTime">'+getTosReportTime(num)+'</td>'
+                        +'<td class="reportUser"> Test Otomasyon </td>');
                 });
                 $('#myDataTable').DataTable();
     }
