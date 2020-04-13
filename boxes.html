@@ -111,7 +111,7 @@
         <thead class="thead-my-style">
             <tr>
                 <th ><img src="/img/nsn.png"/></th>
-                <th ><i class="fas fa-file-signature"></i>  Rapor Adı</th>
+                <th ><i class="fas fa-file-signature"></i>  Rapor No</th>
                 <th ><i class="far fa-calendar-alt"></i>  Rapor Tarihi</th>
                 <th ><i class="far fa-clock"></i>  Rapor Saati</th>
                 <th ><i class="far fa-user"></i> Kullanıcı</th>
@@ -138,19 +138,19 @@
         });
         $("#android").click(function(){
             showHideContainers();
-            $.get("bddandroid", function(data, status){
+            $.get("android", function(data, status){
                addDataToTable(data,status);
             });
         });
         $("#ios").click(function(){
             showHideContainers();
-            $.get("bddios", function(data, status){
+            $.get("ios", function(data, status){
                 addDataToTable(data,status);
             });
         });
         $("#karate").click(function(){
             showHideContainers();
-            $.get("karate", function(data, status){
+            $.get("karateapi", function(data, status){
                 addDataToTable(data,status);
             });
         });
@@ -165,6 +165,7 @@
     function addDataToTable(data,status){
         console.log("Dosyalar: " + data + "\nStatus: " + status);
                 var counter=0;
+                $("#myTable").empty();
                 data.forEach(function(num){
                     counter++;
                     $("#myTable").append('<tr><th scope="row" class="myTableRow">'+counter
